@@ -1,0 +1,32 @@
+.fondo-modalusuario {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+    /* display: none; */
+    /* display: none; */
+}
+
+.modal {
+    width: auto;
+    height: auto;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+}
+
+.ocultarmodal {
+    display: none;
+}
+
+.modal-header-title {
+    margin-right: auto;
+}

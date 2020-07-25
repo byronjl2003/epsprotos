@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 // import {JwPaginationComponent} from 'jw-angular-pagination';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+
 // import { ImagenPipe } from './pipes/imagen.pipe';
 import {NotifierModule} from 'angular-notifier';
 
@@ -37,7 +37,7 @@ import {ServiceModule} from './services/service.module';
   ],
   imports: [
     BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule,
-    ReactiveFormsModule, NotifierModule, NgxDatatableModule
+    ReactiveFormsModule, NotifierModule
     // ChartsModule
   ],
   providers: [],

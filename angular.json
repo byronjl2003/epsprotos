@@ -24,6 +24,7 @@
                             "src/assets"
                         ],
                         "styles": [
+
                             "src/styles.css",
                             "./node_modules/angular-notifier/styles.css"
                         ],
@@ -120,5 +121,8 @@
             }
         }
     },
-    "defaultProject": "adminpro"
+    "defaultProject": "adminpro",
+    "cli": {
+        "analytics": "c61a01b7-f99a-4b01-94ec-43396a56a84e"
+    }
 }

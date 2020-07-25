@@ -3,17 +3,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: linear-gradient(45deg, #7175da, #9790F2);
-    font-family: 'Muli', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
 .courses-container {}
 
 .course {
@@ -24,7 +13,7 @@ body {
     max-width: 100%;
     margin: 20px;
     overflow: hidden;
-    width: 700px;
+    width: 800px;
 }
 
 .course h6 {
@@ -43,7 +32,8 @@ body {
     background-color: #2A265F;
     color: #fff;
     padding: 30px;
-    max-width: 250px;
+    /* max-width: 250px */
+    ;
 }
 
 .course-preview a {
@@ -58,7 +48,7 @@ body {
 .course-info {
     padding: 30px;
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .progress-container {
@@ -93,7 +83,8 @@ body {
     letter-spacing: 1px;
 }
 
-.btn {
+
+/* .btn {
     background-color: #2A265F;
     border: 0;
     border-radius: 50px;
@@ -105,12 +96,14 @@ body {
     bottom: 30px;
     right: 30px;
     letter-spacing: 1px;
-}
+} */
 
 
+/* 
 /* SOCIAL PANEL CSS */
 
-.social-panel-container {
+
+/* .social-panel-container {
     position: fixed;
     right: 0;
     bottom: 80px;
@@ -266,4 +259,4 @@ body {
     .floating-btn {
         right: 10px;
     }
-}
+}  */

@@ -4,16 +4,16 @@
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Pagination Footable</h4>
-                <h6 class="card-subtitle">Create your table with Paginated Footable</h6>
-                <label class="form-inline">Show &nbsp;
+                <h4 class="card-title">{{titulo}}</h4>
+                <h6 class="card-subtitle">{{subtitulo}}</h6>
+                <label class="form-inline">Mostrar &nbsp;
                 <select id="demo-show-entries">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
-                </select> &nbsp; entries </label>
-                <table id="demo-foo-pagination" class="table m-b-0 toggle-arrow-tiny" data-page-size="5">
+                </select> &nbsp; registros </label>
+                <!-- <table id="demo-foo-pagination" class="table m-b-0 toggle-arrow-tiny" data-page-size="5">
                     <thead>
                         <tr>
                             <th data-toggle="true"> First Name </th>
@@ -244,7 +244,40 @@
                             </td>
                         </tr>
                     </tfoot>
-                </table>
+                </table> -->
+                <ngx-datatable class="material" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto">
+                    <ngx-datatable-column name="Nombre">
+                        <ng-template let-column="column" ngx-datatable-header-template> Holla! {{ column.name }} </ng-template>
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                            <strong>{{ value }}</strong>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="correo">
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            <span (click)="sort()">{{ column.name }}</span>
+                        </ng-template>
+                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                            <div>{{ value }}</div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="unidad">
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            <span (click)="sort()">{{ column.name }}</span>
+                        </ng-template>
+                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                            <i [innerHTML]="row['unidad']"></i>
+
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Acciones">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                            <button class="btn btn-outline-primary">Modificar</button>
+                            <button class="btn btn-outline-info">Eliminar</button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+
             </div>
         </div>
     </div>
