@@ -1,0 +1,40 @@
+[{
+        "dependencia": "Secretaria general",
+        "personal": 8,
+        "satisfaccion": 78,
+        "desarrollopersonal": 83,
+        "relaciones": 66,
+        "trabajoenequipo": 68,
+        "comunicacion": 81,
+        "liderazgo": 63,
+        "condicionesdetrabajo": 68,
+        "resultado": 72
+
+    },
+    {
+        "dependencia": "relaciones publicas",
+        "personal": 13,
+        "satisfaccion": 78,
+        "desarrollopersonal": 57,
+        "relaciones": 55,
+        "trabajoenequipo": 58,
+        "comunicacion": 65,
+        "liderazgo": 77,
+        "condicionesdetrabajo": 69,
+        "resultado": 61
+
+    },
+    {
+        "dependencia": "Instituto universitario de la mujer",
+        "personal": 11,
+        "satisfaccion": 78,
+        "desarrollopersonal": 64,
+        "relaciones": 66,
+        "trabajoenequipo": 68,
+        "comunicacion": 81,
+        "liderazgo": 63,
+        "condicionesdetrabajo": 68,
+        "resultado": 10
+
+    }
+]

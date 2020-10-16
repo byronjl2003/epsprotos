@@ -1,0 +1,71 @@
+<nz-drawer
+    [nzBodyStyle]="{ overflow: 'auto' , display: 'flex' , flexdirection: 'column' ,justifycontent: 'spacebetween'}"
+    [nzMaskClosable]="false" [nzWidth]="720" [nzVisible]="visible" [nzTitle]="unidad == null ? '':unidad.nombre"
+    (nzOnClose)="close()">
+
+    <div class="frame">
+        <div class="header">
+            <div *ngIf="unidad != null">
+                <h2>Informacion general</h2>
+                <div class="menuresumen elementeffects">
+                    <h4 class="card-subtitle">Nombre</h4>
+                    <p>{{unidad.nombre}}</p>
+                </div>
+                <div class="menuresumen elementeffects">
+                    <h4 class="card-subtitle">Descripcion</h4>
+                    <p>{{unidad.descripcion}}</p>
+                </div>
+                <div class="menuresumen elementeffects">
+                    <h4 class="card-subtitle">Unidad predecesora</h4>
+                    <p>{{unidad.idpadre}}</p>
+                </div>
+                <div class="cardopciones">
+                    <!-- <button class="btn solid" nz-button nzType="primary" [nzLoading]="isLoadingOne">
+                        Editar
+                    </button>
+                    <button class="btn solid" type="submit" nz-button nzType="primary" [nzLoading]="isLoadingOne"
+                        nzDanger>
+                        Eliminar
+                    </button> -->
+                    <nz-button-group>
+                        <button class="btn solid btndrawer" nz-button [nzLoading]="isLoadingOne" nzType="primary"
+                            [nzDanger]="true">ELiminar</button>
+                        <button class="btn solid btndrawer" nz-button nzType="primary" nz-popover nzPopoverTitle="Title"
+                            [(nzPopoverVisible)]="modifyvisible" (nzPopoverVisibleChange)="modifychange($event)"
+                            nzPopoverTrigger="click" [nzPopoverContent]="drawermodcontent">Modificar</button>
+                    </nz-button-group>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="main">
+
+            <h2>Sub-Unidades</h2>
+
+            <!-- <div class="card p-3 elementeffects">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="card-subtitle">Gente evaluada</h4>
+                                <h1>300</h1>
+
+                            </div>
+                            <div class="col-12">
+
+                                <i class="mid mid-f4b7"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+        </div>
+
+
+
+
+    </div>
+
+</nz-drawer>

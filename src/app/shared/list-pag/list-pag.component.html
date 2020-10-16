@@ -1,0 +1,58 @@
+<div>
+    <h3>
+        Unidades
+        <small>
+            <a href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/paging/paging-client.component.ts"
+                target="_blank">
+                Source
+            </a>
+        </small>
+    </h3>
+    <!-- <ngx-datatable class="material" [rows]="rows"
+        [columns]="[{ name: 'idunidad' }, { name: 'nombre' }, { name: 'descripcion' }]" [columnMode]="ColumnMode.force"
+        [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10">
+    </ngx-datatable> -->
+    <ngx-datatable class="material" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50"
+        [footerHeight]="50" rowHeight="auto" [limit]="10">
+
+
+        <ngx-datatable-column name="idunidad">
+            <ng-template let-column="column" ngx-datatable-header-template> {{ column.name }}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <strong>{{ value }}</strong>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="nombre">
+            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">{{ column.name }}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                <div>{{ value }}</div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="descripcion">
+            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">{{ column.name }}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                <div>{{ value }}</div>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="idunidad">
+            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">ACCIONES</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <button class="btn btn-outline-primary" (click)="modificar(value)">Modificar</button>
+                <button class="btn btn-outline-info">Eliminar</button>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+
+
+
+</div>

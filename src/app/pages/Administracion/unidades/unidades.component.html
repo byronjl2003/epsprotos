@@ -1,3 +1,57 @@
+<ng-template #contentTemplate>
+    <form class="floating-labels m-t-40 ">
+        <div class="form-group m-b-40 ">
+            <input type="text " class="form-control " id="input1 ">
+            <span class="bar "></span>
+            <label for="input1 ">Nombre de usuario</label>
+        </div>
+
+        <div class="form-group m-b-40 ">
+            <input type="text " class="form-control " id="input4 ">
+            <span class="bar "></span>
+            <label for="input4 ">Correo</label>
+            <span class="help-block "><small>A este correo se le estara mandando al usuario instrucciones para completar
+                    la
+                    creacion de su cuenta.</small></span>
+        </div>
+        <div class="form-group m-b-40 ">
+            <!-- <input type="text " class="form-control " id="input4 ">
+                                <span class="bar "></span> -->
+            <h6>Unidad</h6>
+            <select id="input5 " class="select2 m-b-10 select2-multiple " style="width: 100% " multiple="multiple ">
+                <optgroup label="Administracion central ">
+                    <option value="AK ">Alaska</option>
+                    <option value="HI ">Hawaii</option>
+                </optgroup>
+                <optgroup label="Facultades ">
+                    <option value="CA ">Ingenieria</option>
+                    <option value="NV ">Humanidades</option>
+                    <option value="OR ">Arquitectura</option>
+                    <option value="WA ">Veterinaria</option>
+                </optgroup>
+                <optgroup label="Centros regionales ">
+                    <option value="AZ ">CUNOR</option>
+                    <option value="CO ">CUNORI</option>
+                    <option value="ID ">CUNBAV</option>
+                    <option value="MT ">CUNDECH</option>
+                    <option value="NE ">ENEC</option>
+                    <option value="NM ">CUNPROGRESO</option>
+                    <option value="ND ">CUNSUR</option>
+                    <option value="UT ">ITUGS</option>
+                    <option value="WY ">CUNOROC</option>
+                </optgroup>
+
+            </select>
+            <span class="help-block "><small>Selecciona una unidad.</small></span>
+        </div>
+
+
+
+    </form>
+</ng-template>
+<ng-template #unidadmodtemplate let-lessonsCounter="estimate">
+
+</ng-template>
 <div class="row page-titles">
 
     <div class="col-md-12 align-content-center">
@@ -10,5 +64,8 @@
 
 </div>
 
-<app-listing></app-listing>
+<!-- <app-listing [servicio]="_servicio" [titulo]="titulo" [subtitulo]="subtitulo"></app-listing> -->
+<app-list-pag></app-list-pag>
+
 <app-modal-usuario></app-modal-usuario>
+<app-drawer [drawermodcontent]='drawermodcontent'></app-drawer>

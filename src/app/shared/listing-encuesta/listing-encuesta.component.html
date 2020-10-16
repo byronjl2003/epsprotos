@@ -1,0 +1,69 @@
+<!-- <div id="login-container"> -->
+<div class="row">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{titulo}}</h4>
+                <h6 class="card-subtitle">{{subtitulo}}</h6>
+                <label class="form-inline">Mostrar &nbsp;
+                    <select id="demo-show-entries">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select> &nbsp; registros </label>
+                <ngx-datatable class="material" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto">
+                    <ngx-datatable-column name="fechaini">
+                        <ng-template let-column="column" ngx-datatable-header-template> Holla! {{ column.name }} </ng-template>
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                            <strong>{{ value }}</strong>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="fechafin">
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            <span (click)="sort()">{{ column.name }}</span>
+                        </ng-template>
+                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                            <div>{{ value }}</div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="unidades">
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            <span (click)="sort()">{{ column.name }}</span>
+                        </ng-template>
+                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                            <div style="background-color: white;">
+                                <i [innerHTML]="row['unidades']"></i>
+
+                            </div>
+
+
+
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="estado">
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            <span (click)="sort()">{{ column.name }}</span>
+                        </ng-template>
+                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                            <div>{{ value }}</div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Acciones">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                            <button class="btn btn-outline-info">Activar</button>
+                            <button class="btn btn-outline-primary">Desactivar</button>
+                            <button class="btn btn-outline-danger">Eliminar</button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+    </div> -->

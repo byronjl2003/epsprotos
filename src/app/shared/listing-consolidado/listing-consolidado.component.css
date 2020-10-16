@@ -1,7 +1,18 @@
-#login-container {
-    padding: 20px;
-    border-radius: 5px;
-    background: #fffffb;
-    position: relative;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+.clima-sano {
+    background-color: rgba(4, 204, 14, 1);
+}
+
+.clima-acceptable {
+    background-color: rgba(135, 246, 23, 1);
+}
+
+.clima-preventivo {
+    background-color: rgba(246, 249, 51, 1);
+}
+
+.clima-debil {
+    background-color: rgba(250, 60, 35, 1);
+    border-left-color: black;
+    text-align: center;
+    font-weight: bold;
 }

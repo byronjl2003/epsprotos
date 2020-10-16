@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ColumnMode} from '@swimlane/ngx-datatable';
 
 @Component({
@@ -7,6 +7,7 @@ import {ColumnMode} from '@swimlane/ngx-datatable';
   styleUrls: ['./listing-consolidado.component.css']
 })
 export class ListingConsolidadoComponent implements OnInit {
+  @Input('mostrar') public mostrar: boolean = true;
   public titulo: string = 'USUARIOS';
   public subtitulo: string =
       'Estos son los usuarios que se encuentran actualmente en el sistema';
@@ -25,7 +26,7 @@ export class ListingConsolidadoComponent implements OnInit {
 
   fetch(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/100k.json`);
+    req.open('GET', `assets/data/consolidado.json`);
 
     req.onload = () => {
       const rows = JSON.parse(req.response);

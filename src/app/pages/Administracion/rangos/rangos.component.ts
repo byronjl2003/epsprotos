@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalinteractionService } from 'src/app/services/service.index';
+import {Component, OnInit} from '@angular/core';
+import {ModalinteractionService} from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-rangos',
@@ -7,10 +7,11 @@ import { ModalinteractionService } from 'src/app/services/service.index';
   styleUrls: ['./rangos.component.css']
 })
 export class RangosComponent implements OnInit {
+  public titulo: string = 'RANGOS';
+  public subtitulo: string = 'Estos son los rangoss del proyecto ';
+  constructor(public _modalservice: ModalinteractionService) {}
 
-  constructor(public _modalservice: ModalinteractionService) { }
-
-  ngOnInit() { }
+  ngOnInit() {}
 
   showDialog() {
     // this.ocultar = false;

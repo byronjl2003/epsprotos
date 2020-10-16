@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ColumnMode} from '@swimlane/ngx-datatable';
+
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
-  public titulo: string = 'USUARIOS';
+  @Input('titulo') public titulo: string = 'USUARIOS';
+  @Input('subtitulo')
   public subtitulo: string =
       'Estos son los usuarios que se encuentran actualmente en el sistema';
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+// declare function init_plugin_selects();
 
 @Component({
   selector: 'app-resumen',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resumen.component.css']
 })
 export class ResumenComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    // init_plugin_selects();
   }
 
+  ngOnInit() {}
 }

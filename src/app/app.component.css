@@ -1,4 +1,9 @@
-.modal-backdrop {
+/* .modal-backdrop {
     background-color: #008000;
     opacity: 1 !important;
+} */
+
+@font-face{
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Regular.ttf');
 }

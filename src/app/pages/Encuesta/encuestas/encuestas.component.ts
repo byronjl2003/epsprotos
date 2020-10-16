@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ModalinteractionService} from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-encuestas',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encuestas.component.css']
 })
 export class EncuestasComponent implements OnInit {
+  constructor(public _modalservice: ModalinteractionService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  showDialog() {
+    // this.ocultar = false;
+    // console.log(this.ocultar);
+    this._modalservice.changeEstate(false);
   }
-
 }

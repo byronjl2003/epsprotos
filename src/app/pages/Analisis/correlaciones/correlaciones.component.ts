@@ -2,7 +2,8 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import {AfterViewInit, Component, NgZone, OnDestroy, OnInit} from '@angular/core';
-
+// declare function init_plugins();
+// declare function init_plugin_selects();
 am4core.useTheme(am4themes_animated);
 @Component({
   selector: 'app-correlaciones',
@@ -14,7 +15,12 @@ export class CorrelacionesComponent implements OnInit, AfterViewInit,
   private chart: am4charts.XYChart;
   private chart2: am4charts.XYChart;
   private chart3: am4charts.XYChart;
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone) {
+    console.log('Constructor Correlaciones');
+    // init_plugin_selects();
+
+    // init_plugins();
+  }
 
   ngOnInit() {}
   ngAfterViewInit() {

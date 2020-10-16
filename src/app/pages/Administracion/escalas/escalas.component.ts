@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalinteractionService } from 'src/app/services/service.index';
+import {Component, OnInit} from '@angular/core';
+import {ModalinteractionService} from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-escalas',
@@ -7,10 +7,12 @@ import { ModalinteractionService } from 'src/app/services/service.index';
   styleUrls: ['./escalas.component.css']
 })
 export class EscalasComponent implements OnInit {
-
-  constructor(public _modalservice: ModalinteractionService) { }
-
-  ngOnInit() { }
+  constructor(public _modalservice: ModalinteractionService) {
+    console.log('CONTRUCTOR ESCALAS');
+  }
+  public titulo: string = 'ESCALAS';
+  public subtitulo: string = 'Estos son las escalas de del propecto ';
+  ngOnInit() {}
 
   showDialog() {
     // this.ocultar = false;

@@ -1,0 +1,67 @@
+.cardcontainer {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.climatotalcard {
+    background-color: rgb(61, 221, 40);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: auto;
+    height: 150px;
+}
+
+.menuresumen {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin: 5px;
+    overflow: hidden;
+    width: 25%;
+    height: 100px;
+    display: flex;
+}
+
+.elementeffects {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.course-preview {
+    background-color: #307ab0;
+    color: #fff;
+    padding: 30px;
+    /* max-width: 250px */
+    margin: 0 auto;
+}
+
+.course-info {
+    padding: 30px;
+    position: relative;
+    /* width: 100%; */
+}
+
+.course-preview h5 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.course-preview h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #fff;
+}

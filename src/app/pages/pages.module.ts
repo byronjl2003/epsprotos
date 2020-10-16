@@ -5,8 +5,10 @@ import {FormsModule} from '@angular/forms';
 
 import {ChartsModule} from 'ng2-charts';
 
-import {GraficoDonaComponent} from '../components/grafico-dona/grafico-dona.component';
-import {IncrementadorComponent} from '../components/incrementador/incrementador.component';
+/* import {GraficoDonaComponent} from
+'../components/grafico-dona/grafico-dona.component';
+import {IncrementadorComponent} from
+'../components/incrementador/incrementador.component'; */
 import {PlusbtnComponent} from '../components/plusbtn/plusbtn.component';
 import {PipesModule} from '../pipes/pipes.module';
 import {SharedModule} from '../shared/shared.module';
@@ -38,8 +40,8 @@ import {RxjsComponent} from './rxjs/rxjs.component';
     ProgressComponent,
     Graficas1Component,
     PagesComponent,
-    IncrementadorComponent,
-    GraficoDonaComponent,
+    // IncrementadorComponent,
+    // GraficoDonaComponent,
     PlusbtnComponent,
     AccoutSettingsComponent,
     PromesasComponent,

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalinteractionService } from 'src/app/services/service.index';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {MenuDropDownTokenFactory} from 'ng-zorro-antd';
+import {ModalinteractionService} from 'src/app/services/service.index';
+import {UnidadesService} from '../../../services/administracion/unidades.service';
 
 @Component({
   selector: 'app-unidades',
@@ -7,32 +9,16 @@ import { ModalinteractionService } from 'src/app/services/service.index';
   styleUrls: ['./unidades.component.css']
 })
 export class UnidadesComponent implements OnInit {
+  @ViewChild('contentTemplate') drawermodcontent: TemplateRef<any>;
+  public titulo: string = 'UNIDADES';
+  public subtitulo: string = 'Estos son las unidades del sistema';
+  constructor(
+      public _modalservice: ModalinteractionService,
+      private _servicio: UnidadesService) {}
 
-  constructor(public _modalservice: ModalinteractionService) { }
-
-  ngOnInit() { }
+  ngOnInit() {}
 
   showDialog() {
-    // this.ocultar = false;
-    // console.log(this.ocultar);
     this._modalservice.changeEstate(false);
   }
-  /* showDialog() {
-    let view = this.modal_1.createEmbeddedView(null);
-    this.vc.insert(view);
-    this.modal_1.elementRef.nativeElement.previousElementSibling.classList
-        .remove('fade');
-    this.modal_1.elementRef.nativeElement.previousElementSibling.classList.add(
-        'modal-open');
-    this.modal_1.elementRef.nativeElement.previousElementSibling.style.display =
-        'block';
-    this.backdrop = document.createElement('DIV');
-    this.backdrop.className = 'modal-backdrop';
-    document.body.appendChild(this.backdrop);
-  } */
-
-  /* closeDialog() {
-    this.vc.clear();
-    document.body.removeChild(this.backdrop);
-  } */
 }

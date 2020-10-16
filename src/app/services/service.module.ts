@@ -3,7 +3,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 
 import {LoginGuardGuard} from './guards/login-guard.guard';
-import {SettingsService, SharedService, SidevarService, UsuarioService} from './service.index';
+import {DrawerinteractionService, SettingsService, SharedService, SidevarService, UnidadesService, UsuarioService, UsuariosService} from './service.index';
 
 
 
@@ -11,11 +11,9 @@ import {SettingsService, SharedService, SidevarService, UsuarioService} from './
   declarations: [],
   imports: [CommonModule, HttpClientModule],
   providers: [
-    SettingsService,
-    SidevarService,
-    SharedService,
-    UsuarioService,
-    LoginGuardGuard,
+    SettingsService, SidevarService, SharedService, UsuarioService,
+    LoginGuardGuard, DrawerinteractionService, UsuariosService, UnidadesService
+
   ]
 })
 export class ServiceModule {

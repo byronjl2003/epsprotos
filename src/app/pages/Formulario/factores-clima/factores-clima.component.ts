@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-factores-clima',
@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./factores-clima.component.css']
 })
 export class FactoresClimaComponent implements OnInit {
+  public titulo: string = 'ESCALAS';
+  public subtitulo: string = 'Estos son las escalas en el sistema ';
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
