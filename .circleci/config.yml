@@ -4,7 +4,7 @@ jobs:
     #ANTES DE HACER LAS PRUEBAS UNITARIAS
     prebuild:
         docker:
-            -image: circleci/node:10-browsers
+            - image: circleci/node:10-browsers
         steps:
             - checkout
             - run:
