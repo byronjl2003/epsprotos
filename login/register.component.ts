@@ -3,9 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NotifierService} from 'angular-notifier';
 
-import {Usuario} from '../models/usuario.model';
+import {Usuario} from '../src/app/models/usuario.model';
 // import swal from 'sweetalert';
-import {UsuarioService} from '../services/service.index';
+import {UsuarioService} from '../src/app/services/service.index';
 
 // declare function init_plugins();
 @Component({

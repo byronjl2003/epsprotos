@@ -24,8 +24,8 @@ import {APP_ROUTES} from './app.routes';
 import {AuthInterceptor} from './http-interceptors/auth-interceptors';
 
 
-import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './login/register.component';
+import {LoginComponent} from '../../login/login.component';
+import {RegisterComponent} from '../../login/register.component';
 // MODULOS
 import {PagesModule} from './pages/pages.module';
 // SERVICIOS
