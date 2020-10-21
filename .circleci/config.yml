@@ -39,7 +39,20 @@ jobs:
                 echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                 docker push byronjl2003/angularpro:$TAG           
                 
-
+    deploy:
+        docker:
+        - image: circleci/python:3.7
+        steps:
+        - checkout
+        - run:
+            name: Install dependencies
+            command: |
+                pip install ecs-deploy
+        - run:
+            name: Deploy
+            command: |
+                TAG=0.1.$CIRCLE_BUILD_NUM
+                ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service trambocloud/nginx:$TAG --timeout 1200 --ignore-warnings --region $AWS_REGION
 
 orbs:
   docker: circleci/docker@1.4.0
