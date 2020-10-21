@@ -27,6 +27,22 @@ jobs:
             - run:
                 name: Testing
                 command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+            
+            - setup_remote_docker:
+                version: 19.03.13
+                docker_layer_caching: true
+
+            # build and push Docker image
+            - run: |
+                TAG=0.1.$CIRCLE_BUILD_NUM
+                docker build -t byronjl2003/angularpro:$TAG .
+                echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                docker push byronjl2003/angularpro:$TAG           
+                
+
+
+orbs:
+  docker: circleci/docker@1.4.0
 workflows:
     version: 2
     test:
@@ -34,6 +50,4 @@ workflows:
             - prebuild
       
     #test:
-    #build:
-    #push:
-    #deploy:
+    
