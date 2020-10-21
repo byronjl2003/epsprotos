@@ -13,17 +13,29 @@ import {NzDrawerModule} from 'ng-zorro-antd/drawer';
 // ZORRO
 import {NzMessageModule} from 'ng-zorro-antd/message';
 
+
+//NGRX
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './reducers/auth.reducer';
+
 import {AppComponent} from './app.component';
 // RUTAS
 import {APP_ROUTES} from './app.routes';
 import {AuthInterceptor} from './http-interceptors/auth-interceptors';
+
+
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './login/register.component';
 // MODULOS
 import {PagesModule} from './pages/pages.module';
 // SERVICIOS
 import {ServiceModule} from './services/service.module';
-import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './effects/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { reducers } from './reducers/index';
+
 
 @NgModule({
   declarations: [
@@ -31,9 +43,14 @@ import { StoreModule } from '@ngrx/store';
 
   ],
   imports: [
-    BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule,
+    BrowserModule,
+    APP_ROUTES, PagesModule, FormsModule, ServiceModule,
     ReactiveFormsModule, NotifierModule, NzMessageModule,
-    BrowserAnimationsModule, HttpClientModule, NzButtonModule, NzDrawerModule, StoreModule.forRoot({}, {})
+    BrowserAnimationsModule, HttpClientModule,
+    NzButtonModule, NzDrawerModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 
   ],
   exports: [

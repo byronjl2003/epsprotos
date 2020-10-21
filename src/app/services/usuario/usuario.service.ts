@@ -36,11 +36,14 @@ export class UsuarioService {
     }
   }
 
-  login(email: string, pass: string): Observable<any> {
+  login(email: string, pass: string): Observable<Usuario> {
     console.log('ENTRE AL LOGIN');
     const uri = URL_SERVICIOS + API_VERSION + URL_AUTENTICACION;
     const bodyreq = new LoginRequest(email, pass);
-    return this.http.post(uri, bodyreq, httpOptions);
+    return this.http.post<Usuario>(uri, bodyreq, httpOptions).pipe(
+      map(response => response.body)
+    );
+    //.pipe(catchError(this.handleError));
   }
   saveUserToLocalStorage =
       (user: Usuario) => {

@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { UsuarioService } from '../usuario/usuario.service';
-
+import { Observable, Subscription } from 'rxjs';
+import * as fromRoot from '../../reducers/index';
+import { select, Store } from '@ngrx/store';
+import { Usuario } from '../../models/usuario.model';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuardGuard implements CanActivate {
   
-  constructor(public _usuarioService:UsuarioService,public router: Router){}
+  sub: Subscription;
+  usuario: Usuario = null;
+  constructor(private store: Store < fromRoot.appState >, public router: Router){
+    this.sub = this.store.pipe(select(fromRoot.selectUser))
+      .subscribe((val) => {
+      this.usuario = val;
+    });
+  
+  }
   canActivate() {
     console.log('PASO POR EL LOGIN GUARD');
-    if ( this._usuarioService.estaLogueado()){
+    if ( this.usuario!= null){
       console.log('YEIII, AUTENTICADO!!');
       return true;
     }
