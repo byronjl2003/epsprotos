@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import * as fromRoot from '../../reducers/index';
 import { select, Store } from '@ngrx/store';
 import { Usuario } from '../../models/usuario.model';
+import { loadUserFromLocalStorage} from '../../actions/auth.actions'
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,7 @@ export class LoginGuardGuard implements CanActivate {
   sub: Subscription;
   usuario: Usuario = null;
   constructor(private store: Store < fromRoot.appState >, public router: Router){
+    this.store.dispatch(loadUserFromLocalStorage());
     this.sub = this.store.pipe(select(fromRoot.selectUser))
       .subscribe((val) => {
       this.usuario = val;

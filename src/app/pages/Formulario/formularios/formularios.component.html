@@ -2,13 +2,309 @@
 
     <div class="col-md-12 align-content-center">
         <div class="breadcrumb">
-            <button type="button" (click)="showDialog()" class="btn btn-info btn-circle btn-xl"><i
-                    class="fa fa-plus"></i> </button>
+            <button type="button" (click)="showDialog()" class="btn btn-info btn-circle btn-xl"><i class="fa fa-plus"></i> </button>
         </div>
 
     </div>
 
 </div>
+<div class="tableshadow">
+    <nz-table nzShowSizeChanger [nzData]="formularioslistdata" [nzFrontPagination]="false" [nzLoading]="loadingforms" [nzTotal]="totalformularios" [nzPageSize]="pagezise" [nzPageIndex]="pageindex" (nzQueryParams)="onQueryParamsChange($event)" (nzPageIndexChange)="onPageIndexChange()"
+        nzNoResult="No HAY DATOS :(">
+        <thead>
+            <tr>
+                <th nzColumnKey="idformulario">IDFormulario</th>
+                <th nzColumnKey="idformulario">Nombre</th>
+                <th nzColumnKey="usado">Usado</th>
+                <th nzColumnKey="numestadisticos">NumEstadisticos</th>
+                <th nzColumnKey="numgrupos">NumGrupos</th>
+                <th nzColumnKey="acciones">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of formularioslistdata">
+                <td>{{ data.formulario.idformulario }}</td>
+                <td>{{ data.formulario.name }}</td>
+                <td>{{ data.formulario.usado }}</td>
+                <td>{{ data.formulario.numestadisticos }}</td>
+                <td>{{ data.formulario.numgrupos }}</td>
+                <td><button nz-button nzType="primary" nzDanger>Eliminar</button></td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
 
-<app-listing [titulo]="titulo" [subtitulo]="subtitulo"></app-listing>
-<app-modal-usuario></app-modal-usuario>
+<!-- <app-modal-usuario></app-modal-usuario> -->
+
+<ng-template #tplTitle>
+    <span>Crea un nuevo formulario</span>
+
+    <nz-steps [nzCurrent]="estado">
+        <nz-step nzTitle="NOMBRE"></nz-step>
+        <nz-step nzTitle="AGREGAR ESTADISTICOS"></nz-step>
+        <nz-step nzTitle="AGREGAR FACTORES CLIMA"></nz-step>
+        <nz-step nzTitle="CONFIGURACIONES"></nz-step>
+    </nz-steps>
+
+</ng-template>
+<ng-template #tplTitleClima>
+    <span>CREA UN NUEVO FACTOR CLIMA</span>
+
+    <nz-steps [nzCurrent]="estado">
+        <nz-step nzTitle="NOMBRE"></nz-step>
+        <nz-step nzTitle="AGREGAR PREGUNTAS"></nz-step>
+    </nz-steps>
+
+</ng-template>
+
+
+<ng-template #tplContent let-params>
+    <div [ngSwitch]="estado">
+        <div *ngSwitchCase="states.CREACION" class="formform">
+
+
+            <form nz-form [nzLayout]="'inline'" [formGroup]="formForm">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                        <nz-input-group>
+                            <input formControlName="nameform" nz-input placeholder="Nombre del formulario" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzPrimary nzType="dashed">Copiar de otro formulario</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+
+
+        </div>
+        <div *ngSwitchCase="states.ADDESTADISTICOS" class="formform">
+
+            <form nz-form [nzLayout]="'inline'" [formGroup]="fesForm">
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                        <nz-select formControlName="factores" class="multipleselect" nzMode="multiple" nzPlaceHolder="Selecciona Factores estadisticos" [nzSize]="'large'" nzAllowClear [nzDropdownMatchSelectWidth]="false" (nzOpenChange)="getfes()" (ngModelChange)="selectChange()">
+                            <ng-container *ngFor="let o of feslist">
+                                <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o.nombre"></nz-option>
+                            </ng-container>
+                            <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+                                <i nz-icon nzType="loading" class="loading-icon"></i> Cargando Estadisticos...
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </form>
+            <div class="fecardscontainers">
+                <div *ngFor="let fes of fesForm.value.factores" class="cardcontainer">
+                    <div class="course-preview">
+                        <h5>{{fes.nombre}}</h5>
+
+                    </div>
+                    <div class="course-info">
+                        <nz-list nzBordered nzSize="small">
+                            <nz-list-header class="listheader">OPCIONES</nz-list-header>
+                            <nz-list-item *ngFor="let op of fes.opciones">{{op.contenido}}</nz-list-item>
+
+                        </nz-list>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div *ngSwitchCase="states.ADDCLIMA" class="formform">
+            <form nz-form [nzLayout]="'inline'" [formGroup]="fclForm">
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                        <nz-select formControlName="factores" class="multipleselect" nzMode="multiple" nzPlaceHolder="Selecciona Factores estadisticos" [nzSize]="'large'" nzAllowClear [nzDropdownMatchSelectWidth]="false" (nzOpenChange)="getfcl()" (ngModelChange)="selectChange2()">
+                            <ng-container *ngFor="let o of fcllist">
+                                <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o.nombre"></nz-option>
+                            </ng-container>
+                            <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+                                <i nz-icon nzType="loading" class="loading-icon"></i> Cargando Estadisticos...
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                        <button (click)="showNewClimaDialog()">new</button>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </form>
+            <nz-collapse>
+                <nz-collapse-panel *ngFor="let grupo of (gruposSeleccionados|grouppipe)" [nzHeader]="getFactorName(grupo.key).nombre" [nzActive]="grupo.active " [nzDisabled]="grupo.disabled ">
+                    <div class="groupscontainer">
+                        <div *ngFor="let gr of grupo.value " class="groupcontainer">
+                            <div class="groupheader ">
+                                <h5>{{gr.nombre}}</h5>
+                                <button type="button " class="btn btn-info btn-circle btn-xs btn-close-group "><i class="fa fa-times "></i> </button>
+                            </div>
+                            <div class="groupbody ">
+                                <nz-list nzBordered nzSize="small ">
+                                    <nz-list-header class="listheader ">PREGUNTAS</nz-list-header>
+                                    <nz-list-item *ngFor="let op of gr.preguntas ">{{op.contenido}}</nz-list-item>
+
+                                </nz-list>
+                            </div>
+                            <div class="groupfooter ">
+                                <h5>Total Preguntas: 200</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </nz-collapse-panel>
+            </nz-collapse>
+
+        </div>
+
+        <div *ngSwitchCase="states.CONFIGURACIONES" class="formform">
+            <h3>RANGO</h3>
+            <div class="container">
+                <input type="radio" class="radio" name="progress" value="five" id="five">
+                <label for="five" class="label">5%</label>
+
+                <input type="radio" class="radio" name="progress" value="twentyfive" id="twentyfive" checked>
+                <label for="twentyfive" class="label">25%</label>
+
+                <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
+                <label for="fifty" class="label">50%</label>
+
+                <input type="radio" class="radio" name="progress" value="seventyfive" id="seventyfive">
+                <label for="seventyfive" class="label">75%</label>
+
+                <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
+                <label for="onehundred" class="label">100%</label>
+
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <h3>Apariencia</h3>
+            <nz-radio-group [(ngModel)]="radioValue" nzButtonStyle="solid" nzSize="large">
+                <label nz-radio-button nzValue="A">Todo</label>
+                <label nz-radio-button nzValue="B">Por grupo</label>
+                <label nz-radio-button nzValue="C">Por prgunta</label>
+
+            </nz-radio-group>
+            <button (click)="showVistaPrevia()">VISTA PREVIA</button>
+        </div>
+
+        <div *ngSwitchDefault>
+            <h1>SE TERMINO</h1>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #tplContentClima let-params>
+    <div [ngSwitch]="estadoclima">
+        <div *ngSwitchCase="states.NOMBRECLIMA" class="formform">
+            <form nz-form [nzLayout]="'inline'" [formGroup]="formclimaname">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                        <nz-input-group>
+                            <input formControlName="nameform" nz-input placeholder="Nombre del factor clima" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </form>
+
+        </div>
+        <div *ngSwitchCase="states.PREGUNTASCLIMA" class="formformnewclima">
+            <form nz-form [formGroup]="formclimapreguntas">
+                <div class="formcontainer">
+                    <div class="formcoltextarea">
+                        <nz-form-control nzErrorTip="Debe de ingresar un nombre">
+                            <textarea formControlName="contenido" nz-input placeholder="Contenido de la pregunta" class="formtextarea"></textarea>
+                        </nz-form-control>
+                    </div>
+                    <div class="formcol">
+
+                        <label for="oppreg">Tipo de pregunta</label>
+                        <nz-radio-group name="oppreg" formControlName="tipopregunta" nzButtonStyle="solid">
+                            <label *ngFor="let item of tipoPreguntaEnSistema; let i = index" [attr.data-index]="i" nz-radio-button [nzValue]="i">{{item.nombre}}</label>
+                        </nz-radio-group>
+                        <label for="oppreg ">Tipo de respuesta</label>
+                        <nz-radio-group name="opresp " formControlName="tiporespuesta" nzButtonStyle="solid ">
+                            <label *ngFor="let item of tipoRespuestaEnSistema let i = index" [attr.data-index]="i" nz-radio-button [nzValue]="i">{{item.nombre}}</label>
+
+                        </nz-radio-group>
+                        <button nz-button nzType="primary" (click)="addpregunta() " [disabled]="!actualformclima.valid">Agregar Pregunta</button>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </form>
+            <ul nz-list [nzDataSource]="newclimapregs " nzBordered nzSize="large " nzNoResult="FIN ">
+                <nz-list-header>Preguntas Agregadas</nz-list-header>
+                <li nz-list-item *ngFor="let item of newclimapregs; let i=i ndex " [attr.data-index]="i " nzNoFlex>
+
+                    <ul>
+
+                    </ul>
+
+                    <ul>
+
+                    </ul>
+
+                    <ul nz-list-item-actions>
+                        <nz-list-item-action>
+                            <h6>{{item.tipopregunta.idtipopregunta === 1 ? 'Multiple' : ' Texto'}}</h6>
+                        </nz-list-item-action>
+                        <nz-list-item-action>
+                            <h6>{{item.tiporespuesta.idtiporespuesta == 1?'Obligatorio':'Opcional'}}</h6>
+                        </nz-list-item-action>
+
+                        <nz-list-item-action>
+                            <button (click)="removenewpreg(i) ">Quitar</button>
+
+
+                        </nz-list-item-action>
+                    </ul>
+                    {{ item.contenido }}
+                </li>
+                <nz-list-footer>Total: {{newclimapregs.length}}</nz-list-footer>
+            </ul>
+        </div>
+        <div *ngSwitchDefault>
+            <h1>SE TERMINO</h1>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+<ng-template #tplFooter let-ref="modalRef ">
+    <button nz-button nzType="primary " nzDanger (click)="closeform() ">Cancelar</button>
+    <button nz-button (click)="anterior() " *ngIf="estado> 0">Anterior</button>
+    <button nz-button (click)="siguiente()" *ngIf="estado < 3" [disabled]="!actualform.valid">Siguiente</button>
+    <button nz-button (click)="save()" *ngIf="estado === 3">Crear Formulario</button>
+
+</ng-template>
+
+<ng-template #tplFooterClima let-ref="modalRef">
+    <button nz-button nzType="primary " nzDanger (click)="closeformclima() ">Cancelar</button>
+    <button nz-button (click)="anteriorclima() " *ngIf="estadoclima> 4">Anterior</button>
+    <button nz-button (click)="siguienteclima()" *ngIf="estadoclima < 5" [disabled]="!actualformclima.valid">Siguiente</button>
+    <button nz-button (click)="saveclima()" *ngIf="estadoclima === 5">Crear</button>
+
+</ng-template>
+
+<ng-template #VistaPreviaTitle let-ref="modalRef"></ng-template>
+<ng-template #VistaPreviaContent let-ref="modalRef"></ng-template>
+<ng-template #VistaPreviaFooter let-ref="modalRef"></ng-template>

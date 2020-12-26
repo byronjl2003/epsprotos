@@ -3,8 +3,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzDrawerModule} from 'ng-zorro-antd/drawer';
-import {NzPopoverModule} from 'ng-zorro-antd/popover';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzTableModule } from 'ng-zorro-antd/table';
 import {PipesModule} from '../pipes/pipes.module';
 
 import {BaseRecursoComponent} from './base-recurso/base-recurso.component';
@@ -26,6 +28,8 @@ import {ModalUsuarioModComponent} from './modal-usuario-mod/modal-usuario-mod.co
 import {ModalUsuarioComponent} from './modal-usuario/modal-usuario.component';
 import {NopagefoundComponent} from './nopagefound/nopagefound.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import { ModaldefinitivoComponent } from './modaldefinitivo/modaldefinitivo.component';
+import { ListingPagFormulariosComponent } from './listing-pag-formularios/listing-pag-formularios.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
     ListingComponent,     ModalUsuarioComponent,    ModalUsuarioModComponent,
     ModalUnidadComponent, ModalUnidadModComponent,  ListingConsolidadoComponent,
     CardClimaComponent,   ListingEncuestaComponent, DrawerComponent,
-    ListPagComponent,     DrawerComponent,
+    ListPagComponent,     DrawerComponent,  ModaldefinitivoComponent, ListingPagFormulariosComponent, 
 
 
   ],
@@ -54,13 +58,19 @@ import {SidebarComponent} from './sidebar/sidebar.component';
     ListingEncuestaComponent,
     ListPagComponent,
     DrawerComponent,
+    ModaldefinitivoComponent,
 
   ],
   imports: [
     RouterModule, CommonModule, PipesModule, NgxDatatableModule, NzDrawerModule,
-    NzButtonModule, NzPopoverModule
+    NzButtonModule, NzPopoverModule, NzModalModule, NzTableModule ,
 
   ]
 })
+/**
+ * ESTE MODULO ES PARA LOS COMPONENTES QUE SE USARAN EN VARIAS PAGINAS
+ *
+ * ENTRE ELLOS ESTAN MODALES, LISTAS DE PAGINAS, ETC..
+ */
 export class SharedModule {
 }

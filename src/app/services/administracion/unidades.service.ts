@@ -10,8 +10,13 @@ import {Unidad} from '../../models/unidad.model';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  responseType: 'json' as const ,
+  headers: new HttpHeaders(
+    {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': 'true'
+    }),
+  responseType: 'json' as const,
+  withCredentials: true as const,  
   observe: 'response' as const
 };
 @Injectable({providedIn: 'root'})

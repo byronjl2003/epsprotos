@@ -2,12 +2,11 @@
 
 export class Usuario {
   constructor(
-      public uid: string,
-      public username: string,
-      public idrol: number,
-      public rol: string,
-      public token: string,
-      public refresh: string,
+      public Username: string,
+      public Idrol: number,
+      public Rol: string,
+      public Token: string
+      
 
   ) {}
 }

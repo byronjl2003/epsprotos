@@ -9,8 +9,9 @@ import {UnidadesService} from '../../services/administracion/unidades.service';
   styleUrls: ['./list-pag.component.css']
 })
 export class ListPagComponent implements OnInit {
+  @Input('titulo') titulo: string;
   @Input('drawermodcontent') drawermodcontent: TemplateRef<any>;
-  rows: Unidad[] = [new Unidad(100, 'PRUEBAAA', 'PRUEBAA', 2)];
+  rows: any[] = [new Unidad(100, 'PRUEBAAA', 'PRUEBAA', 2)];
   ColumnMode = ColumnMode;
 
   constructor(

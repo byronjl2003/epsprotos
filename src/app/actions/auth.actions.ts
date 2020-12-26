@@ -26,6 +26,10 @@ export const startLoadingLogin = createAction(
 export const stopLoadingLogin = createAction(
     '[Main] stop Loading Login'
 )
+
+export const loadUserFromLocalStorage = createAction(
+    '[login-guard] Load User From Local Storage'
+)
 /* export const increment = createAction('[auth] increment');
 export const decrement = createAction('[auth] decrement');
 export const reset = createAction('[auth] reset'); */

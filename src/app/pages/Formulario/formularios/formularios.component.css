@@ -1,0 +1,309 @@
+.tableshadow {
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.formform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.multipleselect {
+    /* min-width: 500px;
+    width: 500px; */
+    width: 15rem;
+    min-width: 15rem;
+}
+
+.fecardscontainers {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+
+/*
+TARJETAS
+*/
+
+.cardcontainer {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    margin: 0.3rem;
+    overflow: hidden;
+    width: 50%;
+    max-height: 20%;
+}
+
+.elementeffects {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.course-preview {
+    background-color: #307ab0;
+    color: #fff;
+    padding: 1rem;
+    /* max-width: 250px */
+    margin: 0 auto;
+    max-height: 25%;
+    width: 100%;
+}
+
+.course-info {
+    padding: 0.5rem;
+    max-height: 80px;
+    overflow: scroll;
+}
+
+.listheader {
+    font-weight: bold;
+}
+
+.course-info::-webkit-scrollbar {
+    display: none;
+}
+
+.course-preview h5 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+
+/*CLASES PARA*/
+
+.groupscontainer {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    background-color: blueviolet;
+}
+
+.groupscontainer::-webkit-scrollbar {
+    display: none;
+}
+
+.groupcontainer {
+    background-color: tomato;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    overflow: hidden;
+    width: 500px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.groupheader {
+    background-color: #307ab0;
+    color: #fff;
+    padding: 1rem;
+    /* max-width: 250px */
+    margin: 0 auto;
+    /* height: 10%; */
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.groupheader h5 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.btn-close-group {
+    margin-bottom: 0px;
+    align-self: flex-end;
+    background-color: black;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    label {
+        color: $white!important;
+        &.btn-secondary {
+            color: $bodytext!important;
+        }
+    }
+}
+
+.groupbody {
+    padding: 0.5rem;
+    /* max-height: 35%; */
+    overflow: scroll;
+    /* height: 70%; */
+}
+
+.groupbody::-webkit-scrollbar {
+    display: none;
+}
+
+.groupfooter {
+    background-color: tomato;
+    /* height: 20%; */
+    display: flex;
+    align-items: center;
+}
+
+.groupfooter h5 {
+    /* padding-top: 0px;
+    margin-top: 0px;
+    font-size: 0.5rem;
+    flex-grow: 3; */
+}
+
+.otro {
+    background-color: yellowgreen;
+    overflow: scroll;
+}
+
+.otro2 {
+    width: 100%;
+    height: 50%;
+    overflow: scroll;
+}
+
+.formformnewclima {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.formcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* min-width: 100%;
+    width: 100%; */
+}
+
+.formcoltextarea {
+    flex-grow: 3;
+}
+
+.formcol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: #307ab0; */
+    margin-top: 1.2rem;
+}
+
+.formtextarea {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+
+/*ESTILOS PARA EL TEMA DEL RANGO*/
+
+.container {
+    margin: 60px auto;
+    width: 400px;
+    text-align: center;
+}
+
+.container .progress {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.progress {
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+    height: 16px;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+
+/*
+ * Note: using adjacent or general sibling selectors combined with
+ *       pseudo classes doesn't work in Safari 5.0 and Chrome 12.
+ *       See this article for more info and a potential fix:
+ *       https://css-tricks.com/webkit-sibling-bug/
+ */
+
+#five:checked~.progress>.progress-bar {
+    width: 5%;
+    background-color: #f63a0f;
+}
+
+#twentyfive:checked~.progress>.progress-bar {
+    width: 25%;
+    background-color: #f27011;
+}
+
+#fifty:checked~.progress>.progress-bar {
+    width: 50%;
+    background-color: #f2b01e;
+}
+
+#seventyfive:checked~.progress>.progress-bar {
+    width: 75%;
+    background-color: #f2d31b;
+}
+
+#onehundred:checked~.progress>.progress-bar {
+    width: 100%;
+    background-color: #86e01e;
+}
+
+.radio {
+    display: none;
+}
+
+.label {
+    display: inline-block;
+    margin: 0 5px 20px;
+    padding: 3px 8px;
+    color: #aaa;
+    text-shadow: 0 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.radio:checked+.label {
+    color: white;
+    background: rgba(0, 0, 0, 0.25);
+}

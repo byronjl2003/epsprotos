@@ -13,7 +13,7 @@ import {DrawerinteractionService, UsuarioService} from 'src/app/services/service
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent implements OnInit, OnDestroy {
-  @Input('drawermodcontent') drawermodcontent: TemplateRef<any>;
+  //@Input('drawermodcontent') drawermodcontent: TemplateRef<any>;
   public visible: boolean = false;
   public subscription: Subscription;
   public othersub: Subscription;
@@ -48,7 +48,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this._draweinteractionService.changeEstate(false);
   }
 
-  modifyvisible: boolean = false;
+ 
 
   modifyclickMe(): void {
     this.visible = false;

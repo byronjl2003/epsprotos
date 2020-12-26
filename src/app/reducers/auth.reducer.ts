@@ -40,7 +40,7 @@ const _authReducer = createReducer(
   on(login, (state) => ({...state,loadingAuthentication: true})),
   on(logout, (state) => ({...state,loadingAuthentication:true, user: null})),
   on(loginSuccess, (state, { user }) => ({...state, loadingAuthentication: false, user: user})),
-  on(loginFailure, (state, { error}) => ({...state, loadingAuthentication: false,errorMessage: error.msg,errorAuthentication: true}))
+  on(loginFailure, (state, { error}) => ({...state, loadingAuthentication: false, errorMessage: error.msg, errorAuthentication: true}))
   
 );
  

@@ -21,13 +21,19 @@ import { ResumenComponent } from "./Analisis/resumen/resumen.component";
 import { MiClimaComponent } from "./Analisis/mi-clima/mi-clima.component";
 import { ConsolidadosComponent } from "./Analisis/consolidados/consolidados.component";
 import { CorrelacionesComponent } from "./Analisis/correlaciones/correlaciones.component";
-
+import { LandingComponent } from './landing/landingcomponent/landing.component';
+import { VistapreviaComponent } from './vistaprevia/vistaprevia.component';
 const pagesRoutes: Routes = [
   {
     path: "",
     component: PagesComponent,
     canActivate: [LoginGuardGuard],
     children: [
+      {
+        path: "landing",
+        component: LandingComponent,
+        data: {titulo:"Bienvedidos!"}
+      },
       {
         path: "usuarios",
         component: UsuariosComponent,
@@ -88,7 +94,12 @@ const pagesRoutes: Routes = [
         component: CorrelacionesComponent,
         data: { titulo: "Correlaciones" },
       },
-      { path: "", redirectTo: "/unidades", pathMatch: "full" },
+      /* {
+        path: "vistaprevia",
+        component: VistapreviaComponent,
+        data: { titulo: "VistaPrevia" },
+      }, */
+      { path: "", redirectTo: "/landing", pathMatch: "full" },
     ],
   },
 ];

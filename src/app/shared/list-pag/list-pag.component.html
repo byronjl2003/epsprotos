@@ -1,6 +1,6 @@
 <div>
     <h3>
-        Unidades
+        {{titulo}}
         <small>
             <a href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/paging/paging-client.component.ts"
                 target="_blank">
@@ -12,8 +12,7 @@
         [columns]="[{ name: 'idunidad' }, { name: 'nombre' }, { name: 'descripcion' }]" [columnMode]="ColumnMode.force"
         [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10">
     </ngx-datatable> -->
-    <ngx-datatable class="material" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50"
-        [footerHeight]="50" rowHeight="auto" [limit]="10">
+    <ngx-datatable class="material" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="5">
 
 
         <ngx-datatable-column name="idunidad">

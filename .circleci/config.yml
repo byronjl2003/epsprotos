@@ -51,8 +51,7 @@ jobs:
         - run:
             name: Deploy
             command: |
-                TAG=0.1.$CIRCLE_BUILD_NUM
-                ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service trambocloud/nginx:$TAG --timeout 1200 --ignore-warnings --region $AWS_REGION
+                ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service trambocloud/nginx:latest --timeout 1200 --ignore-warnings --region $AWS_REGION
 
 orbs:
   docker: circleci/docker@1.4.0

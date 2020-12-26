@@ -1,16 +1,26 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import {ChartsModule} from 'ng2-charts';
-
+//Zorro
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 /* import {GraficoDonaComponent} from
 '../components/grafico-dona/grafico-dona.component';
 import {IncrementadorComponent} from
 '../components/incrementador/incrementador.component'; */
 import {PlusbtnComponent} from '../components/plusbtn/plusbtn.component';
-import {PipesModule} from '../pipes/pipes.module';
+
 import {SharedModule} from '../shared/shared.module';
 
 import {AccoutSettingsComponent} from './accout-settings/accout-settings.component';
@@ -33,8 +43,15 @@ import {PAGES_ROUTES} from './pages.routes';
 import {ProgressComponent} from './progress/progress.component';
 import {PromesasComponent} from './promesas/promesas.component';
 import {RxjsComponent} from './rxjs/rxjs.component';
+import { LandingComponent } from './landing/landingcomponent/landing.component';
+
+import { PipesModule } from '../pipes/pipes.module';
+import { VistapreviaComponent } from './vistaprevia/vistaprevia.component';
+
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
+  
   declarations: [
     DashboardComponent,
     ProgressComponent,
@@ -58,6 +75,9 @@ import {RxjsComponent} from './rxjs/rxjs.component';
     MiClimaComponent,
     ConsolidadosComponent,
     CorrelacionesComponent,
+    LandingComponent,
+    VistapreviaComponent,
+    SurveyComponent,
   ],
   exports: [
     DashboardComponent,
@@ -69,9 +89,22 @@ import {RxjsComponent} from './rxjs/rxjs.component';
     SharedModule,
     PAGES_ROUTES,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     PipesModule,
     CommonModule,
+    NzGridModule,
+    NzButtonModule,
+    NzStepsModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzListModule,
+    NzCollapseModule,
+    NzTableModule,
+    NzRadioModule
+
+
 
   ],
 })

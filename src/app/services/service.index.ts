@@ -10,3 +10,4 @@ export {ModalinteractionService} from './shared/modalinteraction.service'
 export {SharedService} from './shared/shared.service';
 export {SidevarService} from './shared/sidevar.service';
 export {UsuarioService} from './usuario/usuario.service';
+export {FormularioService} from './administracion/formularios.service'

@@ -1,10 +1,10 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {NotifierService} from 'angular-notifier';
 
-import {Observable, throwError} from 'rxjs';
-import {catchError, map, retry} from 'rxjs/operators';
+
+import { Observable, throwError, of } from 'rxjs';
+import {catchError, map, retry, mergeMap} from 'rxjs/operators';
 import {API_VERSION, URL_AUTENTICACION, URL_SERVICIOS} from 'src/app/config/config';
 import {Usuario} from 'src/app/models/usuario.model';
 import {LoginRequest} from '../../models/loginrequest.model';
@@ -12,14 +12,19 @@ import {LoginRequest} from '../../models/loginrequest.model';
 // import {handleError} from '../service.index';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  responseType: 'json' as const ,
+  headers: new HttpHeaders(
+    {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': 'true'
+    }),
+  responseType: 'json' as const,
+  withCredentials: true as const,  
   observe: 'response' as const
 };
 @Injectable({providedIn: 'root'})
 export class UsuarioService {
-  usuario: Usuario;
-  token: string;
+  //usuario: Usuario;
+  //token: string;
 
   constructor(public http: HttpClient) {
     console.log('Servicio de usuario listo');
@@ -27,13 +32,22 @@ export class UsuarioService {
   }
 
   cargarStorage() {
-    if (localStorage.getItem('user')) {
-      this.usuario = JSON.parse(localStorage.getItem('user'));
-      this.token = this.usuario.token;
-    } else {
-      this.token = '';
-      this.usuario = null;
-    }
+    return new Observable<Usuario>(sub => {
+      try {
+        if (localStorage.getItem('user')) {
+          sub.next(JSON.parse(localStorage.getItem('user')) as Usuario);
+        
+      } else {
+        sub.next(null);
+      }
+      sub.complete();
+        
+      } catch (error) {
+        sub.error(error);
+      }
+      
+     })
+    
   }
 
   login(email: string, pass: string): Observable<Usuario> {
@@ -41,23 +55,49 @@ export class UsuarioService {
     const uri = URL_SERVICIOS + API_VERSION + URL_AUTENTICACION;
     const bodyreq = new LoginRequest(email, pass);
     return this.http.post<Usuario>(uri, bodyreq, httpOptions).pipe(
-      map(response => response.body)
+      map(response => {
+        console.log(response);
+        return response.body;
+      })
     );
+    
+    
+    
     //.pipe(catchError(this.handleError));
+  }
+
+  logout(): Observable < boolean > {
+    console.log('DESLOGUEANDOSEEEE');
+    const uri = `http://localhost:5001/api/v1/logout`;
+    
+    return this.cargarStorage().pipe(
+      mergeMap((user) => {
+        const body = { token: user.Token };
+        return this.http.post(uri, body, httpOptions).pipe(
+          map((response) => {
+            if (response.status == 200) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+        );
+      })
+    );
+
   }
   saveUserToLocalStorage =
       (user: Usuario) => {
         return new Promise((resolve, reject) => {
           localStorage.setItem('user', JSON.stringify(user));
           console.log(`Se esta escribiendo ${user}`);
-          this.token = user.token;
-          resolve('yepa');
+          
         });
       }
+  
+      
 
-  estaLogueado() {
-    return (this.token.length > 5) ? true : false;
-  }
+  
   crearUsuario(usuario: Usuario): Observable<any> {
     let url = URL_SERVICIOS + '/usuario';
     return this.http.post(url, usuario)

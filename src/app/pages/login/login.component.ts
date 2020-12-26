@@ -4,17 +4,17 @@ import {Component, OnInit,OnDestroy} from '@angular/core';
 import {FormBuilder, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import {NzMessageService} from 'ng-zorro-antd/message';
+//import {NzMessageService} from 'ng-zorro-antd/message';
 import {Observable, Subscription, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
 
-import {Usuario} from '../src/app/models/usuario.model';
-import { authState } from '../src/app/reducers/auth.reducer';
-import { UsuarioService } from '../src/app/services/service.index';
+import {Usuario} from '../../models/usuario.model';
+import { authState } from '../../reducers/auth.reducer';
+import { UsuarioService } from '../../services/service.index';
 
-import { login } from '../src/app/actions/auth.actions';
+import { login } from '../../actions/auth.actions';
 
-import * as fromRoot from '../src/app/reducers';
+import * as fromRoot from '../../reducers';
 declare function init_plugins();
 
 @Component({
@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
       public router: Router, private store: Store<fromRoot.appState>,
-      private fb: FormBuilder, private message: NzMessageService) {}
+      private fb: FormBuilder/* , private message: NzMessageService */) {}
   ngOnDestroy(): void {
+    this.isLoadingsub.unsubscribe();
     
   }
 
@@ -64,10 +65,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   } */
   ingresar(forma: NgForm) {
     console.log('INGRESANDO');
-    /* console.log(forma.valid);
-    console.log(forma.value); */
-    console.log(forma.value.username);
+    console.log(forma.valid);
+    console.log(forma.value);
+    console.log(forma.value.name);
+    console.log(forma.value.name.valid);
     console.log('-------------');
+    console.log();
     /*
     lecleart usuario = new Usuario(null,forma.value.email,forma.value.password);
 
@@ -76,9 +79,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.router.navigate(['/dashboard']);
     });
     */
-    this.message.info('This is a normal message');
+    /* this.message.info('This is a normal message'); */
   }
   login() {
+    console.log(this.loginForm.get('email').valid);
+    console.log(this.loginForm.get('password').valid);
     this.store.dispatch(login({ username: this.loginForm.value.email, password: this.loginForm.value.password }));
     // console.log(this.loginForm.value.email);
     // console.log(this.loginForm.value.password);
